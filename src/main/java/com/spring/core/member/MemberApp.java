@@ -1,13 +1,16 @@
 package com.spring.core.member;
 
+import com.spring.core.AppConfig;
+
 public class MemberApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        Member member = new Member(1L, "memA",Grade.VIP);
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+
+        Member member = new Member(1L, "memA", Grade.VIP);
         memberService.join(member);
 
-        Member findMember = memberService.findMember(1L);
-        System.out.println("member = " + member.getName());
-        System.out.println("findMember = " + findMember.getName());
+        Member member1 = memberService.findMember(1L);
+        System.out.println("member1 = " + member1);
     }
 }
